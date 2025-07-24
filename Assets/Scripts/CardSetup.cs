@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class CardSetup : MonoBehaviour
 {
-    public Sprite[] cardIcons; // Assigned in Inspector (sliced icons)
-    public GameObject cardGrid; // Assigned in Inspector
+    public Sprite[] cardIcons; 
+    public GameObject cardGrid; 
     private List<Card> allCards = new List<Card>();
 
     void Start()

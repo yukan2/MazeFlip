@@ -15,7 +15,7 @@ public class Card : MonoBehaviour
 
     public void Flip()
     {
-        if (isMatched || isFlipped || isAnimating) return;
+        if (isMatched || isFlipped || isAnimating || !GameManager.Instance.allowFlips) return;
 
         StartCoroutine(FlipAnimation());
     }
@@ -27,7 +27,6 @@ public class Card : MonoBehaviour
         float duration = 0.05f;
         float time = 0f;
 
-        // Shrink
         while (time < duration)
         {
             float scale = Mathf.Lerp(1f, 0f, time / duration);
@@ -81,7 +80,6 @@ public class Card : MonoBehaviour
         float duration = 0.05f;
         float time = 0f;
 
-        // Shrink
         while (time < duration)
         {
             float scale = Mathf.Lerp(1f, 0f, time / duration);
@@ -92,12 +90,10 @@ public class Card : MonoBehaviour
 
         transform.localScale = new Vector3(0f, 1f, 1f);
 
-        // Hide front, show back
         isFlipped = false;
         front.SetActive(false);
         back.SetActive(true);
 
-        // Expand
         time = 0f;
         while (time < duration)
         {
